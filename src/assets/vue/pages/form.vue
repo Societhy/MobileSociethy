@@ -146,8 +146,8 @@
 
     mounted: function() {
         console.log('-- FORM MOUNTED --')
-       	this.auth_data = window.store.auth_data
-       	console.log(window.store.ipPhone)
+       	console.log(window.store.auth_data)
+       	console.log('-- Merde --')
     },
 
     methods: {

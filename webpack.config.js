@@ -13,7 +13,13 @@ const path = require('path'),
 let config = function (env) {
   let returner = {
     entry: entryFile,
-    
+    stats: {
+        // Configure the console output
+        errorDetails: true, //this does show errors
+        colors: false,
+        modules: true,
+        reasons: true
+    },
     resolve: {
       extensions: ['.js', '.json', '.vue'],
       modules: [path.join(__dirname, 'src'), 'node_modules'],

@@ -4,6 +4,9 @@ import Framework7 from 'framework7'
 import Framework7Vue from 'framework7-vue'
 import Framework7Theme from 'framework7/dist/css/framework7.ios.min.css'
 import Framework7ThemeColors from 'framework7/dist/css/framework7.ios.colors.min.css'
+//import VueSocketio from 'vue-socket.io'
+//Vue.use(VueSocketio, io('http://192.168.1.13:4242/'))
+//import VueToastr from '@deveodk/vue-toastr'
 /* OR for Material Theme:
  import Framework7Theme from 'framework7/dist/css/framework7.material.min.css'
  import Framework7ThemeColors from 'framework7/dist/css/framework7.material.colors.min.css'
@@ -15,7 +18,14 @@ import store from './store.js'
 import App from './main.vue'
 
 // Init Plugin
+/*
+Vue.use(VueToastr, {
+    defaultPosition: 'toast-top-right',
+    defaultType: 'info',
+    defaultTimeout: 4000
+})*/
 Vue.use(Framework7Vue)
+
 
 // Init App
 new Vue({
@@ -26,7 +36,7 @@ new Vue({
   framework7: {
     root: '#app',
     /* Uncomment to enable Material theme: */
-    material: true,
+    material: false,
     routes: Routes
   },
   // Register App Component
@@ -46,9 +56,6 @@ new Vue({
         * @param {Object} object - data
         * get the json of a data
         */
-        test: function() {
-          this.data;
-        },
 
         getJSONData: function(json) {
             if (this.isPhoneGap()) {
@@ -70,7 +77,7 @@ new Vue({
         */
         setAuthToken: function(request) {
             if (this.store.auth_data != null) {
-                request.setRequestHeader("Authentification", this.store.auth_data.token);
+                request.setRequestHeader("Authentification", this.store.auth_data.token)
             }
         },
         /**
@@ -80,7 +87,7 @@ new Vue({
         isPhoneGap: function() {
             return (window.cordova || window.PhoneGap || window.phonegap) 
             && /^file:\/{3}[^\/]/i.test(window.location.href) 
-            && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
+            && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent)
         },
 
         /**
@@ -89,7 +96,7 @@ new Vue({
         * @method setAuthData
         */
         setAuthData: function(_auth_data) {
-            this.store.auth_data = _auth_data;
+            this.store.auth_data = _auth_data
         },
     },
 })
